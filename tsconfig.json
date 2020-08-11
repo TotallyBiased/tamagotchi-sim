@@ -1,0 +1,37 @@
+{
+	"compilerOptions": {
+		"target": "es6",
+		"lib": ["esnext"],
+		"rootDir": "./",
+		"outDir": "./dist",
+		"esModuleInterop": true,
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"strict": true,
+		"sourceMap": true,
+		"inlineSources": true,
+		"types": ["node", "jest"],
+		"jsx": "react",
+		"noImplicitThis": true,
+		"noImplicitAny": true,
+		"removeComments": true,
+		"pretty": true,
+		"incremental": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"allowJs": false,
+		"keyofStringsOnly": true,
+		"alwaysStrict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"strictNullChecks": true,
+		"strictPropertyInitialization": true,
+		"strictBindCallApply": true,
+		"strictFunctionTypes": true,
+		"downlevelIteration": true,
+		"experimentalDecorators": true
+	},
+	"rules": {
+		"no-unused-vars": "off"
+	}
+}

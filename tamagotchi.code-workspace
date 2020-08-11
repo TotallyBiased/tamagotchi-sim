@@ -1,0 +1,44 @@
+{
+	"folders": [
+		{
+			"path": ".",
+			"name": "Tamagotchi-Sim"
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/CVS": true,
+			"**/.DS_Store": true,
+			"node_modules": true,
+			"dist": true
+		},
+		"javascript.format.insertSpaceAfterSemicolonInForStatements": false,
+		"javascript.format.semicolons": "remove",
+		"javascript.preferences.quoteStyle": "double",
+		"typescript.format.semicolons": "remove",
+		"prettier.configPath": ".prettierrc",
+		"prettier.requireConfig": true,
+		"files.associations": {
+			"*.env.*": "dotenv"
+		},
+		"editor.formatOnSave": true,
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": true,
+			"source.organizeImports": true,
+			"source.fixAll.format": true
+		},
+		"workbench.editor.labelFormat": "short"
+	},
+	"extensions": {
+		"recommendations": [
+			"aaron-bond.better-comments",
+			"editorconfig.editorconfig",
+			"mikestead.dotenv",
+			"esbenp.prettier-vscode"
+		]
+	}
+}
