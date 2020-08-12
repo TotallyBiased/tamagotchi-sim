@@ -12,10 +12,7 @@ export function getTamagotchiType(value: string): TamagotchiType | undefined {
 	}
 }
 
-export function createNewTamagotchi(
-	type: TamagotchiType,
-	name: string
-): Tamagotchi {
+export function createNewTamagotchi(type: TamagotchiType, name: string): Tamagotchi {
 	return {
 		id: getNewId(),
 		type,
@@ -27,11 +24,11 @@ export function createNewTamagotchi(
 		sustenance: {
 			calories: 0,
 			nutrition: {
-				A: 0,
-				B: 0,
-				C: 0,
-				D: 0,
-				E: 0
+				a: 0,
+				b: 0,
+				c: 0,
+				d: 0,
+				e: 0
 			}
 		}
 	}

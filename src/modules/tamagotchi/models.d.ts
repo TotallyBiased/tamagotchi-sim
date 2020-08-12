@@ -13,11 +13,11 @@ export type Neutral = "Bored"
 export type Feeling = GoodFeel | Bad | Neutral
 
 export interface Nutrition {
-	A: number
-	B: number
-	C: number
-	D: number
-	E: number
+	a: number
+	b: number
+	c: number
+	d: number
+	e: number
 }
 
 export interface Sustenance {

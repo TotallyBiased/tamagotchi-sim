@@ -4,10 +4,7 @@ export function getNewId(): string {
 	return Math.floor(Math.random() * 10000).toString()
 }
 
-export function updateWithUniqueId<T extends EntityBase>(
-	state: EntityCollection<T>,
-	item: T
-): T {
+export function updateWithUniqueId<T extends EntityBase>(state: EntityCollection<T>, item: T): T {
 	while (checkForEntity(state, item)) {
 		item.id = getNewId()
 	}
@@ -31,10 +28,7 @@ export function setEntityIfExists<T extends EntityBase>(
 	return checkForEntity(state, item) ? setEntity(state, item) : state
 }
 
-export function getEntity<T extends EntityBase>(
-	state: EntityCollection<T>,
-	id: T["id"]
-): T | "none" {
+export function getEntity<T extends EntityBase>(state: EntityCollection<T>, id: T["id"]): T | "none" {
 	return checkForEntity(state, id) ? state[id] : "none"
 }
 

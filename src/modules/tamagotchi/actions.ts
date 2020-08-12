@@ -9,10 +9,7 @@ export function selectTamagotchiAction(tamagotchiId: string) {
 	} as const
 }
 
-export function createTamagotchiAction(
-	name: string,
-	tamagotchiType: TamagotchiType
-) {
+export function createTamagotchiAction(name: string, tamagotchiType: TamagotchiType) {
 	return {
 		type: "CREATE_TAMAGOTCHI_ACTION",
 		data: {

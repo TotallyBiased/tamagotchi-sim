@@ -3,10 +3,7 @@ import { neverReached } from "../../common/reducer"
 import { createNewTamagotchi } from "./business-logic"
 import { Tamagotchi, TamagotchiActions } from "./models"
 
-export function selectedTamagotchiIdReducer(
-	state = "",
-	action: TamagotchiActions
-) {
+export function selectedTamagotchiIdReducer(state = "", action: TamagotchiActions) {
 	switch (action.type) {
 		case "SELECT_TAMAGOTCHI_ACTION":
 			return action.data.tamagotchiId
@@ -29,10 +26,7 @@ export function tamagotchisReducer(
 				state,
 				updateWithUniqueId(
 					state,
-					createNewTamagotchi(
-						action.data.tamagotchiType,
-						action.data.name
-					)
+					createNewTamagotchi(action.data.tamagotchiType, action.data.name)
 				)
 			)
 		case "EDIT_TAMAGOTCHI_ACTION":

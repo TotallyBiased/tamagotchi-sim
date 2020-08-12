@@ -1,16 +1,14 @@
 import { Box, Text, useStdout } from "ink"
 import * as React from "react"
 import { useEffect, useState } from "react"
+import { EmptyRecord } from "../../types"
 
-type IBorderProps = React.PropsWithChildren<{}>
+type IBorderProps = React.PropsWithChildren<EmptyRecord>
 
 function useStdoutDimensions(): [number, number] {
 	const { stdout } = useStdout()
 	if (!stdout) return [10, 10]
-	const [dimensions, setDimensions] = useState<[number, number]>([
-		stdout.columns,
-		stdout.rows
-	])
+	const [dimensions, setDimensions] = useState<[number, number]>([stdout.columns, stdout.rows])
 
 	useEffect(() => {
 		const handler = () => setDimensions([stdout.columns, stdout.rows])
@@ -23,7 +21,7 @@ function useStdoutDimensions(): [number, number] {
 	return dimensions
 }
 
-export const Border = (props: IBorderProps) => {
+export function Border(props: IBorderProps): JSX.Element {
 	const [columns, rows] = useStdoutDimensions()
 	return (
 		<Box width={columns} height={rows}>

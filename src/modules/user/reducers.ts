@@ -18,16 +18,10 @@ export function selectedUserIdReducer(state = "", action: UserActions) {
 	return state
 }
 
-export function usersReducer(
-	state: Record<string, User> = {},
-	action: UserActions
-) {
+export function usersReducer(state: Record<string, User> = {}, action: UserActions) {
 	switch (action.type) {
 		case "CREATE_USER_ACTION":
-			const newUser: User = updateWithUniqueId(
-				state,
-				createNewUser(action.data.name)
-			)
+			const newUser: User = updateWithUniqueId(state, createNewUser(action.data.name))
 			return {
 				...state,
 				[newUser.id]: newUser
@@ -42,10 +36,7 @@ export function usersReducer(
 	return state
 }
 
-export function currentUserViewReducer(
-	state: UserViewType = "view-tamagotchi",
-	action: UserActions
-) {
+export function currentUserViewReducer(state: UserViewType = "view-tamagotchi", action: UserActions) {
 	switch (action.type) {
 		case "UPDATE_USER_VIEW_ACTION":
 			return action.data.view

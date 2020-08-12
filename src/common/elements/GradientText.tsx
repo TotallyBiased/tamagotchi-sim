@@ -11,13 +11,8 @@ type IGradientProps =
 			colors: string
 	  }
 
-export function GradientText(
-	props: React.PropsWithChildren<IGradientProps>
-): React.ReactElement {
-	const gradient =
-		"name" in props
-			? gradientString[props.name]
-			: gradientString(props.colors)
+export function GradientText(props: React.PropsWithChildren<IGradientProps>): React.ReactElement {
+	const gradient = "name" in props ? gradientString[props.name] : gradientString(props.colors)
 	const applyGradient = (text: string) => gradient.multiline(stripAnsi(text))
 
 	return <Transform transform={applyGradient}>{props.children}</Transform>

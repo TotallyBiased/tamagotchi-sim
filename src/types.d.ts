@@ -3,11 +3,7 @@ import { NotificationActions } from "./modules/notification/models"
 import { TamagotchiActions } from "./modules/tamagotchi/models"
 import { UserActions } from "./modules/user/models"
 
-type Actions =
-	| UserActions
-	| NotificationActions
-	| TamagotchiActions
-	| ControlsActions
+type Actions = UserActions | NotificationActions | TamagotchiActions | ControlsActions
 
 /** ActionBase
  * Used as a model the action messages instead of the Redux Action
@@ -17,7 +13,7 @@ type Actions =
  */
 interface ActionBase<T = string> {
 	type: T
-	data?: object
+	data?: EmptyRecord
 }
 
 /** GetActionBaseType
@@ -41,9 +37,8 @@ type GetActionBaseType<T extends ActionBase> = T["type"]
  * is a necessity and understood to others why they were not able to provide a
  * narrower correct type. This can include when there is a
  */
-type IntentionalAny<TReason extends string> = TReason extends string
-	? any
-	: never
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type IntentionalAny<TReason extends string> = TReason extends string ? any : never
 /**
  * `FixMe`: Use to signal that type should be fixed, for example,
  * can be used initially in a pull request when a dev wasn't able
@@ -57,7 +52,7 @@ type FixMe<TReason extends string> = IntentionalAny<TReason>
  */
 type Inexpressible<TReason extends string> = IntentionalAny<TReason>
 
-type DefaultProps = Record<string, unknown>
+type EmptyRecord = Record<string, unknown>
 
 /** RefinementType
  * Used to narrow down a subset of a used defined type such as a distribute
@@ -65,31 +60,25 @@ type DefaultProps = Record<string, unknown>
  */
 type RefinementType<T, K extends T> = K extends T ? K : never
 
-type RefineActionWithoutAction<
-	T extends ActionBase,
-	K extends GetActionBaseType<T>
-> = T extends { type: K } ? { type: K } : never
+type RefineActionWithoutAction<T extends ActionBase, K extends GetActionBaseType<T>> = T extends {
+	type: K
+}
+	? { type: K }
+	: never
 
-type RefineActionWithData<
-	T extends Required<ActionBase>,
-	K extends GetActionBaseType<T>
-> = T extends { type: K; data: infer P } ? { type: K; data: P } : never
+type RefineActionWithData<T extends Required<ActionBase>, K extends GetActionBaseType<T>> = T extends {
+	type: K
+	data: infer P
+}
+	? { type: K; data: P }
+	: never
 
 /** RefineAction
  * Used to refine a union of action models
  */
-type RefineAction<
-	T extends ActionBase,
-	K extends GetActionBaseType<T>
-> = T extends Required<ActionBase>
+type RefineAction<T extends ActionBase, K extends GetActionBaseType<T>> = T extends Required<ActionBase>
 	? RefineActionWithData<T, K>
 	: RefineActionWithoutAction<T, K>
-
-/** ReactFCWithChildren
- * Used when creating a render prop functional React component by making
- * the child component mandatory.
- */
-type ReactFCWithChildren<T = unknown> = React.FC<T & { children: JSX.Element }>
 
 /** MembersOf
  * Used to extract members of an object
@@ -101,8 +90,6 @@ type MembersOf<T> = T[keyof T]
  */
 type ExtractReturnTypesFromImport<
 	T extends {
-		[key: string]: IntentionalAny<
-			"Widen the type to allow any type of function."
-		>
+		[key: string]: IntentionalAny<"Widen the type to allow any type of function.">
 	}
 > = ReturnType<MembersOf<T>>

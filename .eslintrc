@@ -1,0 +1,81 @@
+{
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaVersion": 2020,
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true
+		}
+	},
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	},
+	"extends": [
+		"plugin:react/recommended",
+		"plugin:@typescript-eslint/recommended",
+		"prettier/@typescript-eslint",
+		"plugin:prettier/recommended"
+	],
+	"rules": {
+		"@typescript-eslint/explicit-function-return-type": "off",
+		"@typescript-eslint/prefer-interface": "off",
+		"no-console": "warn",
+		"react/prop-types": "off",
+		"react/display-name": 0,
+		"react/prop": 0,
+		"react/forbid-prop-types": ["error", { "forbid": ["any", "array"] }],
+		"react/jsx-sort-default-props": [
+			"error",
+			{
+				"ignoreCase": true
+			}
+		],
+		"react/jsx-sort-props": [
+			"error",
+			{
+				"callbacksLast": true,
+				"shorthandFirst": true,
+				"noSortAlphabetically": true,
+				"reservedFirst": true
+			}
+		],
+		// "no-unused-vars": "off",
+		"@typescript-eslint/no-unused-vars": "off",
+		"@typescript-eslint/naming-convention": [
+			"error",
+			{
+				"selector": "default",
+				"format": ["camelCase"]
+			},
+			{
+				"selector": "function",
+				"format": ["camelCase", "PascalCase"]
+			},
+			{
+				"selector": "variable",
+				"format": ["camelCase", "UPPER_CASE"]
+			},
+			{
+				"selector": "parameter",
+				"format": ["camelCase", "snake_case"],
+				"leadingUnderscore": "allow"
+			},
+			{
+				"selector": "property",
+				"format": ["camelCase", "snake_case"]
+			},
+			{
+				"selector": "memberLike",
+				"modifiers": ["private"],
+				"format": ["camelCase"],
+				"leadingUnderscore": "require"
+			},
+			{
+				"selector": "typeLike",
+				"format": ["PascalCase"]
+			}
+		]
+	}
+}

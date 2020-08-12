@@ -1,10 +1,11 @@
 import { connect } from "react-redux"
 import { AppState } from "../../../store"
+import { EmptyRecord } from "../../../types"
 import { selectTamagotchiAction } from "../actions"
 import { TamagotchiView } from "../components/TamagotchiView"
 import { Tamagotchi } from "../models"
 
-interface PassThroughProps {}
+type PassThroughProps = EmptyRecord
 
 interface DerivedState {
 	readonly tamagotchi?: Tamagotchi
@@ -16,9 +17,7 @@ const dispatchActions = {
 
 type DispatchActions = typeof dispatchActions
 
-export interface TamagotchiContainerProps
-	extends DispatchActions,
-		DerivedState {}
+export interface TamagotchiContainerProps extends DispatchActions, DerivedState {}
 
 function mapStateToProps(state: AppState, _: PassThroughProps): DerivedState {
 	return {
@@ -28,12 +27,7 @@ function mapStateToProps(state: AppState, _: PassThroughProps): DerivedState {
 	}
 }
 
-export default connect<
-	DerivedState,
-	DispatchActions,
-	PassThroughProps,
-	AppState
->(
+export default connect<DerivedState, DispatchActions, PassThroughProps, AppState>(
 	mapStateToProps,
 	dispatchActions
 )(TamagotchiView)

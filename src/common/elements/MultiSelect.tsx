@@ -15,7 +15,7 @@ interface MultiSelectProps<T extends string = string> {
 	onSubmit: (value: T[]) => void
 }
 
-export const MultiSelect: React.FC<MultiSelectProps> = (props) => {
+export function MultiSelect(props: MultiSelectProps): JSX.Element {
 	const [selectedIndexes, setSelectedIndexes] = useState<number[]>([])
 	const [positionIndex, setPositionIndex] = useState<number>(0)
 	const itemLength = props["items"]["length"]
@@ -55,9 +55,7 @@ export const MultiSelect: React.FC<MultiSelectProps> = (props) => {
 				if (props.mode === "checkbox") {
 					setSelectedIndexes(
 						positionIndex in selectedIndexes
-							? selectedIndexes.filter(
-									(index) => index === positionIndex
-							  )
+							? selectedIndexes.filter((index) => index === positionIndex)
 							: [...selectedIndexes, positionIndex]
 					)
 				}
@@ -89,14 +87,10 @@ export const MultiSelect: React.FC<MultiSelectProps> = (props) => {
 					</Box>
 					<Box marginRight={1}>
 						<Text color="blue">
-							{index === positionIndex
-								? figures.circleFilled
-								: figures.circle}
+							{index === positionIndex ? figures.circleFilled : figures.circle}
 						</Text>
 					</Box>
-					<Text color={item.key === index ? "blue" : ""}>
-						{item.label}
-					</Text>
+					<Text color={item.key === index ? "blue" : ""}>{item.label}</Text>
 				</Box>
 			))}
 		</Box>

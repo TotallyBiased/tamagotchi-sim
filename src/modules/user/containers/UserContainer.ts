@@ -1,9 +1,10 @@
 import { connect } from "react-redux"
 import { AppState } from "../../../store"
+import { EmptyRecord } from "../../../types"
 import { UserView } from "../components.cli/UserView"
 import { UserViewType } from "../models"
 
-interface PassThroughProps {}
+type PassThroughProps = EmptyRecord
 
 type DerivedState = {
 	currentUserView: UserViewType
@@ -21,12 +22,7 @@ function mapStateToProps(state: AppState, _: PassThroughProps): DerivedState {
 	}
 }
 
-export default connect<
-	DerivedState,
-	DispatchActions,
-	PassThroughProps,
-	AppState
->(
+export default connect<DerivedState, DispatchActions, PassThroughProps, AppState>(
 	mapStateToProps,
 	dispatchActions
 )(UserView)

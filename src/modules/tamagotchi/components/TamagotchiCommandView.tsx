@@ -6,7 +6,7 @@ export function TamagotchiCommandView({}: TamagotchiCommandContainerProps): JSX.
 	return (
 		<Box flexDirection="column">
 			<Box flexDirection="row" margin={3}>
-				<Text>""</Text>
+				<Text></Text>
 			</Box>
 		</Box>
 	)

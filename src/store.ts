@@ -4,16 +4,9 @@ import { controlsReducer } from "./modules/controls/reducers"
 import { NotificationBroadcast } from "./modules/notification/models"
 import { notificationReducer } from "./modules/notification/reducers"
 import { Tamagotchi } from "./modules/tamagotchi/models"
-import {
-	selectedTamagotchiIdReducer,
-	tamagotchisReducer
-} from "./modules/tamagotchi/reducers"
+import { selectedTamagotchiIdReducer, tamagotchisReducer } from "./modules/tamagotchi/reducers"
 import { User, UserViewType } from "./modules/user/models"
-import {
-	currentUserViewReducer,
-	selectedUserIdReducer,
-	usersReducer
-} from "./modules/user/reducers"
+import { currentUserViewReducer, selectedUserIdReducer, usersReducer } from "./modules/user/reducers"
 import { Actions } from "./types"
 
 const uiReducer = combineReducers({

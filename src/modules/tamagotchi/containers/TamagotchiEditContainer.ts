@@ -18,27 +18,15 @@ const dispatchActions = {
 
 type DispatchActions = typeof dispatchActions
 
-export interface TamagotchiEditContainerProps
-	extends DispatchActions,
-		DerivedState {}
+export interface TamagotchiEditContainerProps extends DispatchActions, DerivedState {}
 
-function mapStateToProps(
-	state: AppState,
-	{ tamagotchiId }: PassThroughProps
-): DerivedState {
+function mapStateToProps(state: AppState, { tamagotchiId }: PassThroughProps): DerivedState {
 	return {
-		tamagotchi: tamagotchiId
-			? state.entities.tamagotchis[state.ui.selectedTamagotchiId]
-			: undefined
+		tamagotchi: tamagotchiId ? state.entities.tamagotchis[state.ui.selectedTamagotchiId] : undefined
 	}
 }
 
-export default connect<
-	DerivedState,
-	DispatchActions,
-	PassThroughProps,
-	AppState
->(
+export default connect<DerivedState, DispatchActions, PassThroughProps, AppState>(
 	mapStateToProps,
 	dispatchActions
 )(TamagotchiEditView)

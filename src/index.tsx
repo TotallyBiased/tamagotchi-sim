@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import "./config"
 import fs from "fs-extra"
 import { render } from "ink"
 import * as React from "react"
@@ -8,6 +9,7 @@ import store from "./store"
 
 // Catch unhandled rejections
 process.on("unhandledRejection", (_reason) => {
+	console.log(_reason)
 	process.exit()
 })
 

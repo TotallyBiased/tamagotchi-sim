@@ -36,10 +36,7 @@ export function TamagotchiCreateView({
 					}
 					break
 				case "SUBMIT":
-					createTamagotchiAction(
-						newTamagotchiState.name,
-						newTamagotchiState.type
-					)
+					createTamagotchiAction(newTamagotchiState.name, newTamagotchiState.type)
 					break
 				default:
 					break
@@ -53,9 +50,7 @@ export function TamagotchiCreateView({
 			return (
 				<Input
 					prompt={CONTROLS_TEXT.set_name}
-					onSubmit={(value: string) =>
-						handleSubmit("SET_NAME", value)
-					}
+					onSubmit={(value: string) => handleSubmit("SET_NAME", value)}
 				/>
 			)
 		case "SET_GENDER":

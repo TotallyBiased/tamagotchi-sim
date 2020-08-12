@@ -11,12 +11,7 @@ interface InputProps {
 
 const DEFAULT_INPUT_LOCAL_STATE = ""
 
-export function Input({
-	prompt,
-	placeholder = "",
-	onChange,
-	onSubmit
-}: InputProps) {
+export function Input({ prompt, placeholder = "", onChange, onSubmit }: InputProps) {
 	const [value, setValue] = React.useState(DEFAULT_INPUT_LOCAL_STATE)
 
 	const handleSubmit = React.useCallback(
@@ -53,17 +48,17 @@ export function Input({
 			{!!value && (
 				<TextInput
 					value={value}
+					placeholder={placeholder}
 					onChange={handleChange}
 					onSubmit={handleSubmit}
-					placeholder={placeholder}
 				/>
 			)}
 			{!value && (
 				<TextInput
 					value={value}
+					placeholder={placeholder}
 					onChange={handleChange}
 					onSubmit={handleSubmit}
-					placeholder={placeholder}
 				/>
 			)}
 		</Box>

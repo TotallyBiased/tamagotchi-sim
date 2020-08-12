@@ -23,10 +23,7 @@ type DispatchActions = typeof dispatchActions
 
 export interface ControlsContainerProps extends DispatchActions, DerivedState {}
 
-function mapStateToProps(
-	_state: AppState,
-	{ header, placeHolder }: PassThroughProps
-): DerivedState {
+function mapStateToProps(_state: AppState, { header, placeHolder }: PassThroughProps): DerivedState {
 	const prompt = ""
 	return {
 		header,
@@ -35,12 +32,7 @@ function mapStateToProps(
 	}
 }
 
-export default connect<
-	DerivedState,
-	DispatchActions,
-	PassThroughProps,
-	AppState
->(
+export default connect<DerivedState, DispatchActions, PassThroughProps, AppState>(
 	mapStateToProps,
 	dispatchActions
 )(ControlsView)

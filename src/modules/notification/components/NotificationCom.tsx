@@ -4,10 +4,7 @@ import * as React from "react"
 import { useEffect } from "react"
 import { NotificationContainerProps } from "../containers/NotificationContainer"
 
-export function NotificationCom({
-	notification,
-	resetNotificationAction
-}: NotificationContainerProps) {
+export function NotificationCom({ notification, resetNotificationAction }: NotificationContainerProps) {
 	useEffect(() => {
 		if (notification) {
 			nodeNotifier.notify(notification)

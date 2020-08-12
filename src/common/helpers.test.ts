@@ -1,16 +1,7 @@
-import {
-	checkForEntity,
-	getEntity,
-	getNewId,
-	setEntity,
-	updateWithUniqueId
-} from "./helpers"
+import { checkForEntity, getEntity, getNewId, setEntity, updateWithUniqueId } from "./helpers"
 import { EntityBase, EntityCollection } from "./reducer"
 
-function createEntityCollection(
-	count: number,
-	initialState: EntityCollection<EntityBase>
-) {
+function createEntityCollection(count: number, initialState: EntityCollection<EntityBase>) {
 	while (count > 0) {
 		const id = Date.now().toString().slice(1, 5)
 		initialState[id] = { id }
@@ -42,9 +33,7 @@ describe("Test helpers functions: ", () => {
 
 	describe("getEntity", () => {
 		it("should return entity if exists", () => {
-			expect(getEntity(TEST_CASES, "253245")).toEqual(
-				BASE_CASES["253245"]
-			)
+			expect(getEntity(TEST_CASES, "253245")).toEqual(BASE_CASES["253245"])
 			expect(getEntity(TEST_CASES, "000")).toEqual("none")
 		})
 	})
