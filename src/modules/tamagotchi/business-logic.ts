@@ -1,4 +1,4 @@
-import { getNewId } from "../../common/helpers"
+import { getEntityNewId } from "../../common/helpers"
 import { Tamagotchi, TamagotchiType } from "./models"
 
 export function getTamagotchiType(value: string): TamagotchiType | undefined {
@@ -14,7 +14,7 @@ export function getTamagotchiType(value: string): TamagotchiType | undefined {
 
 export function createNewTamagotchi(type: TamagotchiType, name: string): Tamagotchi {
 	return {
-		id: getNewId(),
+		id: getEntityNewId(),
 		type,
 		name,
 		health: {

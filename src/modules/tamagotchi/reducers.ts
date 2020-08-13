@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { setEntity, updateWithUniqueId } from "../../common/helpers"
+import { setOrReplaceEntity, updateWithUniqueId } from "../../common/helpers"
 import { neverReached } from "../../common/reducer"
 import { createNewTamagotchi } from "./business-logic"
 import { Tamagotchi, TamagotchiActions } from "./models"
@@ -23,7 +23,7 @@ export function tamagotchisReducer(
 ) {
 	switch (action.type) {
 		case "CREATE_TAMAGOTCHI_ACTION":
-			return setEntity(
+			return setOrReplaceEntity(
 				state,
 				updateWithUniqueId(
 					state,
@@ -31,7 +31,7 @@ export function tamagotchisReducer(
 				)
 			)
 		case "EDIT_TAMAGOTCHI_ACTION":
-			return setEntity(state, action.data.editedTamagotchi)
+			return setOrReplaceEntity(state, action.data.editedTamagotchi)
 		case "SELECT_TAMAGOTCHI_ACTION":
 			break
 		default:

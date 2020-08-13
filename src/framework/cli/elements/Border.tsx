@@ -1,7 +1,7 @@
 import { Box, Text, useStdout } from "ink"
 import * as React from "react"
 import { useEffect, useState } from "react"
-import { EmptyRecord } from "../../types"
+import { EmptyRecord } from "../../../types"
 
 type IBorderProps = React.PropsWithChildren<EmptyRecord>
 

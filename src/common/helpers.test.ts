@@ -1,5 +1,11 @@
-import { checkForEntity, getEntity, getNewId, setEntity, updateWithUniqueId } from "./helpers"
-import { EntityBase, EntityCollection } from "./reducer"
+import { EntityBase, EntityCollection } from "../types"
+import {
+	checkForEntity,
+	getEntityNewId,
+	getEntityOrNone,
+	setOrReplaceEntity,
+	updateWithUniqueId
+} from "./helpers"
 
 function createEntityCollection(count: number, initialState: EntityCollection<EntityBase>) {
 	while (count > 0) {
@@ -33,16 +39,16 @@ describe("Test helpers functions: ", () => {
 
 	describe("getEntity", () => {
 		it("should return entity if exists", () => {
-			expect(getEntity(TEST_CASES, "253245")).toEqual(BASE_CASES["253245"])
-			expect(getEntity(TEST_CASES, "000")).toEqual("none")
+			expect(getEntityOrNone(TEST_CASES, "253245")).toEqual(BASE_CASES["253245"])
+			expect(getEntityOrNone(TEST_CASES, "000")).toEqual("none")
 		})
 	})
 
 	describe("getNewId", () => {
 		it("should return a number", () => {
-			expect(getNewId()).toBeGreaterThan(1)
-			expect(getNewId()).toBeGreaterThan(1)
-			expect(getNewId()).toBeGreaterThan(1)
+			expect(getEntityNewId()).toBeGreaterThan(1)
+			expect(getEntityNewId()).toBeGreaterThan(1)
+			expect(getEntityNewId()).toBeGreaterThan(1)
 		})
 	})
 
@@ -62,7 +68,7 @@ describe("Test helpers functions: ", () => {
 	describe("setEntity", () => {
 		it("should ", async () => {
 			expect(
-				setEntity(
+				setOrReplaceEntity(
 					{
 						...BASE_CASES
 					},

@@ -2,7 +2,7 @@ import figures from "figures"
 import { Box, Text, useInput } from "ink"
 import * as React from "react"
 import { useState } from "react"
-import { hasLength } from "../helpers"
+import { hasLength } from "../../../common/helpers"
 
 interface Item<T extends string = string> {
 	label: string

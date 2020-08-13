@@ -1,6 +1,6 @@
 import * as React from "react"
-import { Input } from "../../../common/elements/Input"
-import { Tile } from "../../../common/elements/Tile"
+import { Input } from "../../../framework/cli/elements/Input"
+import { Tile } from "../../../framework/cli/elements/Tile"
 import { ControlsContainerProps } from "../containers/ControlsContainer"
 import { CONTROLS_TEXT } from "../text"
 

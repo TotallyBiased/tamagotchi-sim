@@ -1,20 +1,23 @@
-import { EntityBase, EntityCollection } from "./reducer"
+import { EntityBase, EntityCollection, Noneable } from "../types"
 
-export function getNewId(): string {
-	return Math.floor(Math.random() * 10000).toString()
+export function getEntityNewId(powerOf = 10000): string {
+	return Math.floor(Math.random() * powerOf).toString()
 }
 
 export function updateWithUniqueId<T extends EntityBase>(state: EntityCollection<T>, item: T): T {
 	while (checkForEntity(state, item)) {
-		item.id = getNewId()
+		item.id = getEntityNewId()
 	}
 	return item
 }
 
-export function setEntity<T extends EntityBase>(
+export function setOrReplaceEntity<T extends EntityBase>(
 	state: EntityCollection<T>,
 	item: T
 ): EntityCollection<T> {
+	/**
+	 * We defer to copy-on-write by creating a new object.
+	 */
 	return {
 		...state,
 		[item.id]: item
@@ -25,13 +28,20 @@ export function setEntityIfExists<T extends EntityBase>(
 	state: EntityCollection<T>,
 	item: T
 ): EntityCollection<T> {
-	return checkForEntity(state, item) ? setEntity(state, item) : state
+	return checkForEntity(state, item) ? setOrReplaceEntity(state, item) : state
 }
 
-export function getEntity<T extends EntityBase>(state: EntityCollection<T>, id: T["id"]): T | "none" {
+export function getEntityOrNone<T extends EntityBase>(
+	state: EntityCollection<T>,
+	id: T["id"]
+): Noneable<T> {
 	return checkForEntity(state, id) ? state[id] : "none"
 }
 
+/** checkForEntity
+ * The items argument is polymorphic by being either
+ * an Entity or an Entity's Id.
+ */
 export function checkForEntity<T extends EntityBase>(
 	state: EntityCollection<T>,
 	item: T["id"] | T
@@ -39,10 +49,13 @@ export function checkForEntity<T extends EntityBase>(
 	return "id" in item ? item.id in state : item in state
 }
 
+/** hasLength
+ * We boolean evaluate the left had side so that we always
+ * return a bool and not a falsy value like undefined.
+ *
+ * And we use the elvis operator in order to
+ * add some runtime safety.
+ */
 export function hasLength<T>(arrayLike: ArrayLike<T>): boolean {
-	/**
-	 * We boolean evaluate the left had side so that we always
-	 * return a bool and not a falsy value like undefined.
-	 */
 	return arrayLike?.length > 0 ? true : false
 }

@@ -93,3 +93,15 @@ type ExtractReturnTypesFromImport<
 		[key: string]: IntentionalAny<"Widen the type to allow any type of function.">
 	}
 > = ReturnType<MembersOf<T>>
+
+type EntityBase = { id: string }
+
+type EntityCollection<T extends EntityBase> = Record<T["id"], T>
+
+interface WithChildren<T = JSX.Element[] | JSX.Element> {
+	readonly children: T
+}
+
+type NoneType = "none"
+
+type Noneable<T> = T | "none"

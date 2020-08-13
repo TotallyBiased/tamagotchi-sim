@@ -1,5 +1,4 @@
-import { EntityBase, EntityCollection } from "../../common/reducer"
-import { ExtractReturnTypesFromImport } from "../../types"
+import { EntityBase, EntityCollection, ExtractReturnTypesFromImport } from "../../types"
 import * as actions from "./actions"
 
 export type UserActions = ExtractReturnTypesFromImport<typeof actions>

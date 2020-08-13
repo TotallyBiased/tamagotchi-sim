@@ -2,17 +2,19 @@ import { Box, Text } from "ink"
 import TextInput from "ink-text-input"
 import * as React from "react"
 
-interface InputProps {
+interface InputProps<T> {
 	prompt: string
 	placeholder?: string
 	onChange?: (value: string) => void
-	onSubmit: (result: any) => void
+	onSubmit: (result: T) => void
 }
 
 const DEFAULT_INPUT_LOCAL_STATE = ""
 
-export function Input({ prompt, placeholder = "", onChange, onSubmit }: InputProps) {
+export function Input<T = unknown>(props: InputProps<T>): JSX.Element {
 	const [value, setValue] = React.useState(DEFAULT_INPUT_LOCAL_STATE)
+
+	const { prompt, placeholder = "", onChange, onSubmit } = props
 
 	const handleSubmit = React.useCallback(
 		(submittedValue) => {
