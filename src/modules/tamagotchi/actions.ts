@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { Tamagotchi, TamagotchiType } from "./models"
 
 export function selectTamagotchiAction(tamagotchiId: string) {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 export function pushNotificationAction(message: string, title: string) {
 	return {
 		type: "PUSH_NOTIFICATION_ACTION",

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 export function inputControlsAction(command: string) {
 	return {
 		type: "INPUT_CONTROLS_ACTION",

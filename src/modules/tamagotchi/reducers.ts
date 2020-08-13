@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { setEntity, updateWithUniqueId } from "../../common/helpers"
 import { neverReached } from "../../common/reducer"
 import { createNewTamagotchi } from "./business-logic"

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 export function loginAction(userId: string) {
 	return {
 		type: "LOGIN_ACTION",

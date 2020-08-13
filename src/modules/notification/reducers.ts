@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { neverReached } from "../../common/reducer"
 import { RefineAction } from "../../types"
 import { ControlsActions } from "../controls/models"
