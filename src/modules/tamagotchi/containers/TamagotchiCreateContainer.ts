@@ -24,7 +24,13 @@ function mapStateToProps(state: AppState, _: PassThroughProps): DerivedState {
 	}
 }
 
-export default connect<DerivedState, DispatchActions, PassThroughProps, AppState>(
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const TamagotchiCreateContainer = connect<
+	DerivedState,
+	DispatchActions,
+	PassThroughProps,
+	AppState
+>(
 	mapStateToProps,
 	dispatchActions
 )(TamagotchiCreateView)

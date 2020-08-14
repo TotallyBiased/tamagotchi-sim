@@ -25,6 +25,7 @@ function mapStateToProps(state: AppState, _: PassThroughProps): DerivedState {
 	}
 }
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export default connect<DerivedState, DispatchActions, PassThroughProps, AppState>(
 	mapStateToProps,
 	dispatchActions

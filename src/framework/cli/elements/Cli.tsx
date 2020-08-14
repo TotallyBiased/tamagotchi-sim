@@ -42,6 +42,7 @@ export function Cli(props: CliProps): JSX.Element {
 		}
 
 		if (key.return) {
+			props.onSubmit(vm.command)
 			vm.command = ""
 		} else if (exact("backspace", "ctrl")) {
 			vm.command = ""

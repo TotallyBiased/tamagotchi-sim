@@ -4,7 +4,7 @@ import { NotificationBroadcast } from "./modules/notification/models"
 import { notificationReducer } from "./modules/notification/reducers"
 import { Tamagotchi } from "./modules/tamagotchi/models"
 import { selectedTamagotchiIdReducer, tamagotchisReducer } from "./modules/tamagotchi/reducers"
-import { User, UserViewType } from "./modules/user/models"
+import { User } from "./modules/user/models"
 import { currentUserViewReducer, selectedUserIdReducer, usersReducer } from "./modules/user/reducers"
 import { Actions, EntityCollection } from "./types"
 
@@ -31,7 +31,6 @@ export type AppState = {
 		notification: NotificationBroadcast
 		controls: string
 		selectedTamagotchiId: string
-		currentUserView: UserViewType
 		selectedUserId: string
 	}
 	entities: {

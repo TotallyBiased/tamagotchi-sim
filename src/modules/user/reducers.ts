@@ -2,7 +2,7 @@
 import { updateWithUniqueId } from "../../common/helpers"
 import { neverReached } from "../../common/reducer"
 import { createNewUser } from "./business-logic"
-import { User, UserActions, UserViewType } from "./models"
+import { User, UserActions } from "./models"
 
 export function selectedUserIdReducer(state = "", action: UserActions) {
 	switch (action.type) {
@@ -31,20 +31,6 @@ export function usersReducer(state: Record<string, User> = {}, action: UserActio
 		case "LOGIN_ACTION":
 		case "UPDATE_USER_VIEW_ACTION":
 			break
-		default:
-			neverReached(action)
-	}
-	return state
-}
-
-export function currentUserViewReducer(state: UserViewType = "view-tamagotchi", action: UserActions) {
-	switch (action.type) {
-		case "UPDATE_USER_VIEW_ACTION":
-			return action.data.view
-		case "LOGOUT_ACTION":
-		case "LOGIN_ACTION":
-		case "CREATE_USER_ACTION":
-			return state
 		default:
 			neverReached(action)
 	}

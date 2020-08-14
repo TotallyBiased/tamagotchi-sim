@@ -13,7 +13,6 @@ const DEFAULT_INPUT_LOCAL_STATE = ""
 
 export function Input<T = unknown>(props: InputProps<T>): JSX.Element {
 	const [value, setValue] = React.useState(DEFAULT_INPUT_LOCAL_STATE)
-
 	const { prompt, placeholder = "", onChange, onSubmit } = props
 
 	const handleSubmit = React.useCallback(

@@ -8,7 +8,8 @@ import { NotificationBroadcast } from "../models"
 type PassThroughProps = EmptyRecord
 
 interface DerivedState {
-	notification: NotificationBroadcast["notification"]
+	notification?: NotificationBroadcast["notification"]
+	nav: string
 }
 
 const dispatchActions = {
@@ -21,20 +22,16 @@ type DispatchActions = typeof dispatchActions
 export interface NotificationContainerProps extends DispatchActions, DerivedState {}
 
 function mapStateToProps(state: AppState, _props: PassThroughProps): DerivedState {
-	switch (state.ui.notification.type) {
-		case "fatal":
-			return state.ui.notification
-		case "general":
-			return state.ui.notification
-		case "warning":
-			return state.ui.notification
-		case "noop":
-		default:
-			return state.ui.notification
+	const { notification } = state.ui.notification
+
+	return {
+		notification,
+		nav: state.ui.controls
 	}
 }
 
-export default connect<DerivedState, DispatchActions, PassThroughProps, AppState>(
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const NotificationContainer = connect<DerivedState, DispatchActions, PassThroughProps, AppState>(
 	mapStateToProps,
 	dispatchActions
 )(NotificationCom)

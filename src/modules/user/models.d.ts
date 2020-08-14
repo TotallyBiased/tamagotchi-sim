@@ -8,10 +8,4 @@ export interface User extends EntityBase {
 	tamagotchiIds: string[]
 }
 
-export type UserViewType =
-	| "view-tamagotchi"
-	| "create-tamagotchi"
-	| "select-tamagotchi"
-	| "command-tamagotchi"
-
 export type Users = EntityCollection<User>

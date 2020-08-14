@@ -132,7 +132,6 @@ function isKey(key: string): key is keyof Key {
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function isKeyBinding(keyCollection: Key) {
 	const result = [...keyCollection]
-	console.table(result)
 	return {
 		result,
 		like: (...keys: (keyof Key)[]): boolean => {
@@ -167,9 +166,7 @@ export function useInput(inputHandler: (key: Key) => void, options: Options = {}
 		}
 
 		const handleData = (data: Buffer) => {
-			const input = String(data)
-			console.log(input.split(""))
-			const parsedInput = input
+			const parsedInput = String(data)
 			const key: Key = {
 				upArrow: false,
 				downArrow: false,
