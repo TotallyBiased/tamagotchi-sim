@@ -6,7 +6,6 @@ import { Provider } from "react-redux"
 import App from "./app"
 import { LocationProvider } from "./common/useLocation"
 import "./config"
-import { Cli } from "./framework/cli/elements/Cli"
 import { RawModeGuard } from "./framework/cli/elements/RawModeGuard"
 import store from "./store"
 
@@ -33,13 +32,9 @@ process.stdin.on("data", (key: string) => {
 render(
 	<RawModeGuard>
 		<Provider store={store}>
-			<Cli>
-				{({ command }) => (
-					<LocationProvider>
-						<App command={command} />
-					</LocationProvider>
-				)}
-			</Cli>
+			<LocationProvider>
+				<App />
+			</LocationProvider>
 		</Provider>
 	</RawModeGuard>
 )

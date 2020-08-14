@@ -4,14 +4,11 @@ import { inputControlsAction, submitControlsAction } from "../actions"
 import { ControlsView } from "../components/ControlsView"
 
 interface PassThroughProps {
-	text: string
+	placeholder: string
+	highlightPastedText: boolean
 }
 
-interface DerivedState {
-	header: string
-	prompt: string
-	placeHolder: string
-}
+type DerivedState = Pick<PassThroughProps, "placeholder" | "highlightPastedText">
 
 const dispatchActions = {
 	inputControlsAction,
@@ -22,13 +19,11 @@ type DispatchActions = typeof dispatchActions
 
 export interface ControlsContainerProps extends DispatchActions, DerivedState {}
 
-function mapStateToProps(_state: AppState, { header, placeHolder }: PassThroughProps): DerivedState {
-	const prompt = ""
-	return {
-		header,
-		placeHolder,
-		prompt
-	}
+function mapStateToProps(
+	_state: AppState,
+	{ placeholder, highlightPastedText }: PassThroughProps
+): DerivedState {
+	return { placeholder, highlightPastedText }
 }
 
 export default connect<DerivedState, DispatchActions, PassThroughProps, AppState>(

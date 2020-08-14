@@ -1,12 +1,24 @@
 import chalk from "chalk"
-import { Box, Text } from "ink"
 import * as React from "react"
 import { useState } from "react"
 import { backspace, write } from "../../../common/helpers"
 import { isKeyBinding, useInput } from "../../../common/useInput"
 import { WithChildren } from "../../../types"
 
-export type CommandLineInterfaceProps = WithChildren<(props: { command: string }) => JSX.Element>
+export interface CliChildrenProps {
+	command: string
+	placeholder: string
+	hasValue: boolean
+	renderedValue: string
+	renderedPlaceholder: string
+}
+
+export interface CliProps extends WithChildren<(props: CliChildrenProps) => JSX.Element> {
+	onChange: (value: string) => void
+	onSubmit: (value: string) => void
+	placeholder?: string
+	highlightPastedText: boolean
+}
 
 interface CursorState {
 	cursorOffset: number
@@ -14,7 +26,7 @@ interface CursorState {
 	command: string
 }
 
-export function Cli(props: CommandLineInterfaceProps): JSX.Element {
+export function Cli(props: CliProps): JSX.Element {
 	const [{ command, cursorOffset, cursorWidth }, setState] = useState<CursorState>({
 		cursorOffset: 0,
 		cursorWidth: 0,
@@ -57,8 +69,8 @@ export function Cli(props: CommandLineInterfaceProps): JSX.Element {
 		vm.cursorOffset
 		setState(vm)
 	})
-	const highlightPastedText = false
-	const placeholder = "Enter A command"
+	const highlightPastedText = props.highlightPastedText
+	const placeholder = props.placeholder ?? "Cli Placeholder Text"
 	const hasValue = command.length > 0
 	const cursorActualWidth = highlightPastedText ? cursorWidth : 0
 
@@ -84,17 +96,5 @@ export function Cli(props: CommandLineInterfaceProps): JSX.Element {
 		renderedValue += chalk.inverse(" ")
 	}
 
-	return (
-		<Box width={"50%"} flexDirection="column">
-			<Box margin={0.2} flexDirection="row">
-				{props.children({ command })}
-			</Box>
-			<Box margin={0.2} flexDirection="row">
-				<Text color={"green"}>{"Prompt: "}</Text>
-				<Text color={hasValue && renderedValue ? "blue" : "yellowBright"}>
-					{placeholder ? (hasValue ? renderedValue : renderedPlaceholder) : renderedValue}
-				</Text>
-			</Box>
-		</Box>
-	)
+	return <>{props.children({ command, placeholder, hasValue, renderedValue, renderedPlaceholder })}</>
 }
