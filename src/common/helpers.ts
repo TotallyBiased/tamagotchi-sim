@@ -59,3 +59,11 @@ export function checkForEntity<T extends EntityBase>(
 export function hasLength<T>(arrayLike: ArrayLike<T>): boolean {
 	return arrayLike?.length > 0 ? true : false
 }
+
+export function backspace(str: string): string {
+	return str ? str.slice(0, str.length - 1) : ""
+}
+
+export function write(...str: string[]): string {
+	return Array.isArray(str) ? str.join("") : ""
+}

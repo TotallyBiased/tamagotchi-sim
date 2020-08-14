@@ -4,8 +4,7 @@ import { inputControlsAction, submitControlsAction } from "../actions"
 import { ControlsView } from "../components/ControlsView"
 
 interface PassThroughProps {
-	header: string
-	placeHolder: string
+	text: string
 }
 
 interface DerivedState {
